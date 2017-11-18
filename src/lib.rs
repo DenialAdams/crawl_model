@@ -7,6 +7,6 @@ extern crate diesel;
 extern crate diesel_codegen;
 extern crate dotenv;
 
-mod data;
-mod db_model;
-mod db_schema;
+pub mod data;
+pub mod db_model;
+pub mod db_schema;
