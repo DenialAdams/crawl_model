@@ -23,8 +23,6 @@ pub struct NewGame<'a> {
     pub runes: i64,
 }
 
-/*
-
 #[derive(Queryable, Associations)]
 #[table_name = "games"]
 pub struct Game {
@@ -45,6 +43,8 @@ pub struct Game {
     pub dur: i64,
     pub runes: i64,
 }
+
+/*
 
 #[derive(Insertable, AsChangeset)]
 #[table_name = "species"]
