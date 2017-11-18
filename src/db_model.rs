@@ -6,6 +6,7 @@ use super::db_schema::games;
 #[table_name = "games"]
 pub struct NewGame<'a> {
     pub gid: &'a str,
+    pub name: &'a str,
     pub species_id: i64,
     pub background_id: i64,
     pub xl: i64,
@@ -27,6 +28,7 @@ pub struct NewGame<'a> {
 #[table_name = "games"]
 pub struct Game {
     pub gid: String,
+    pub name: String,
     pub species_id: i64,
     pub background_id: i64,
     pub xl: i64,
