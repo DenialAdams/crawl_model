@@ -24,7 +24,7 @@ pub struct NewGame<'a> {
     pub runes: i64,
 }
 
-#[derive(Queryable, Associations)]
+#[derive(Queryable)]
 #[table_name = "games"]
 pub struct Game {
     pub gid: String,

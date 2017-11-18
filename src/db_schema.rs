@@ -19,5 +19,3 @@ table! {
         scrolls_used -> BigInt,
     }
 }
-
-joinable!(games -> species (species_id));
