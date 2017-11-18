@@ -1,0 +1,9 @@
+[package]
+name = "crawl_model"
+version = "0.1.0"
+authors = ["Richard McCormack <brick@brick.codes>"]
+
+[dependencies]
+diesel = { git = "https://github.com/diesel-rs/diesel", features = ["sqlite"] }
+diesel_codegen = { git = "https://github.com/diesel-rs/diesel", features = ["sqlite"] }
+dotenv = "0.10.1"
