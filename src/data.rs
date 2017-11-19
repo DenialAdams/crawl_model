@@ -131,31 +131,35 @@ pub enum Background {
 impl FromStr for Background {
     type Err = ();
     fn from_str(s: &str) -> Result<Background, ()> {
-        match s {
-            "Fighter" => Ok(Background::Fighter),
-            "Gladiator" => Ok(Background::Gladiator),
-            "Monk" => Ok(Background::Monk),
-            "Hunter" => Ok(Background::Hunter),
-            "Assassin" => Ok(Background::Assassin),
-            "Berserker" => Ok(Background::Berserker),
-            "Abyssal Knight" => Ok(Background::AbyssalKnight),
-            "Chaos Knight" => Ok(Background::ChaosKnight),
-            "Skald" => Ok(Background::Skald),
-            "Enchanter" => Ok(Background::Enchanter),
-            "Transmuter" => Ok(Background::Transmuter),
-            "Arcane Marksman" => Ok(Background::ArcaneMarksman),
-            "Warper" => Ok(Background::Warper),
-            "Wizard" => Ok(Background::Wizard),
-            "Conjurer" => Ok(Background::Conjurer),
-            "Summoner" => Ok(Background::Summoner),
-            "Necromancer" => Ok(Background::Necromancer),
-            "Fire Elementalist" => Ok(Background::FireElementalist),
-            "Ice Elementalist" => Ok(Background::IceElementalist),
-            "Air Elementalist" => Ok(Background::AirElementalist),
-            "Earth Elementalist" => Ok(Background::EarthElementalist),
-            "Venom Mage" => Ok(Background::VenomMage),
-            "Artificer" => Ok(Background::Artificer),
-            "Wanderer" => Ok(Background::Wanderer),
+        // TODO: we pay the price of to_lowercase() every call in parsing even though we could match on Title Case
+        // the lowercase is only really needed on the serve (web page) for parsing URL values
+        // we could create two specialized versions of from_str for each, but that would mean we can't use parse which is nice
+        // tricky. perhaps we shouldn't be sharing the enums/impls after all? but they shouldn't go out of sync. ugh.
+        match s.to_lowercase().as_str() {
+            "fighter" => Ok(Background::Fighter),
+            "gladiator" => Ok(Background::Gladiator),
+            "monk" => Ok(Background::Monk),
+            "hunter" => Ok(Background::Hunter),
+            "assassin" => Ok(Background::Assassin),
+            "berserker" => Ok(Background::Berserker),
+            "abyssal knight" => Ok(Background::AbyssalKnight),
+            "chaos knight" => Ok(Background::ChaosKnight),
+            "skald" => Ok(Background::Skald),
+            "enchanter" => Ok(Background::Enchanter),
+            "transmuter" => Ok(Background::Transmuter),
+            "arcane marksman" => Ok(Background::ArcaneMarksman),
+            "warper" => Ok(Background::Warper),
+            "wizard" => Ok(Background::Wizard),
+            "conjurer" => Ok(Background::Conjurer),
+            "summoner" => Ok(Background::Summoner),
+            "necromancer" => Ok(Background::Necromancer),
+            "fire elementalist" => Ok(Background::FireElementalist),
+            "ice elementalist" => Ok(Background::IceElementalist),
+            "air elementalist" => Ok(Background::AirElementalist),
+            "earth elementalist" => Ok(Background::EarthElementalist),
+            "venom mage" => Ok(Background::VenomMage),
+            "artificer" => Ok(Background::Artificer),
+            "wanderer" => Ok(Background::Wanderer),
             _ => Err(()),
         }
     }
