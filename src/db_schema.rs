@@ -13,8 +13,8 @@ table! {
         dur -> BigInt,
         runes -> BigInt,
         score -> BigInt,
-        start -> Timestamp,
-        end -> Timestamp,
+        start -> BigInt,
+        end -> BigInt,
         potions_used -> BigInt,
         scrolls_used -> BigInt,
     }
