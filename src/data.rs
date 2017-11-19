@@ -93,7 +93,7 @@ impl FromStr for Species {
             "tengu" => Ok(Species::Tengu),
             "troll" => Ok(Species::Troll),
             "vampire" => Ok(Species::Vampire),
-            "vine Stalker" => Ok(Species::VineStalker),
+            "vine stalker" => Ok(Species::VineStalker),
             _ => Err(()),
         }
     }
