@@ -44,51 +44,56 @@ pub enum Species {
 
 impl FromStr for Species {
     type Err = ();
-    fn from_str(s: &str) -> Result<Species, ()> {
-        if s.ends_with("Draconian") {
+    fn from_str(string: &str) -> Result<Species, ()> {
+        // TODO: we pay the price of to_lowercase() every call in parsing even though we could match on Title Case
+        // the lowercase is only really needed on the serve (web page) for parsing URL values
+        // we could create two specialized versions of from_str for each, but that would mean we can't use parse which is nice
+        // tricky. perhaps we shouldn't be sharing the enums/impls after all? but they shouldn't go out of sync. ugh.
+        let s = string.to_lowercase();
+        if s.ends_with("draconian") {
             return Ok(Species::Draconian);
         }
-        match s {
-            "Barachi" => Ok(Species::Barachi),
-            "Centaur" => Ok(Species::Centaur),
-            "Deep Dwarf" => Ok(Species::DeepDwarf),
-            "Deep Elf" => Ok(Species::DeepElf),
-            "Demigod" => Ok(Species::Demigod),
-            "Demonspawn" => Ok(Species::Demonspawn),
-            "Draconian" => Ok(Species::Draconian),
+        match s.as_str() {
+            "barachi" => Ok(Species::Barachi),
+            "centaur" => Ok(Species::Centaur),
+            "deep dwarf" => Ok(Species::DeepDwarf),
+            "deep elf" => Ok(Species::DeepElf),
+            "demigod" => Ok(Species::Demigod),
+            "demonspawn" => Ok(Species::Demonspawn),
+            "draconian" => Ok(Species::Draconian),
             // These are impossible to hit for now,
             // eventually sub races will be a possibility? TOOD
-            "Red Draconian" => Ok(Species::RedDraconian),
-            "White Draconian" => Ok(Species::WhiteDraconian),
-            "Green Draconian" => Ok(Species::GreenDraconian),
-            "Yellow Draconian" => Ok(Species::YellowDraconian),
-            "Grey Draconian" => Ok(Species::GreyDraconian),
-            "Black Draconian" => Ok(Species::BlackDraconian),
-            "Purple Draconian" => Ok(Species::PurpleDraconian),
-            "Mottled Draconian" => Ok(Species::MottledDraconian),
-            "Pale Draconian" => Ok(Species::PaleDraconian),
+            "red draconian" => Ok(Species::RedDraconian),
+            "white draconian" => Ok(Species::WhiteDraconian),
+            "green draconian" => Ok(Species::GreenDraconian),
+            "yellow draconian" => Ok(Species::YellowDraconian),
+            "grey draconian" => Ok(Species::GreyDraconian),
+            "black draconian" => Ok(Species::BlackDraconian),
+            "purple draconian" => Ok(Species::PurpleDraconian),
+            "mottled draconian" => Ok(Species::MottledDraconian),
+            "pale draconian" => Ok(Species::PaleDraconian),
             // -----------
-            "Felid" => Ok(Species::Felid),
-            "Formicid" => Ok(Species::Formicid),
-            "Gargoyle" => Ok(Species::Gargoyle),
-            "Ghoul" => Ok(Species::Ghoul),
-            "Gnoll" => Ok(Species::Gnoll),
-            "Halfling" => Ok(Species::Halfling),
-            "High Elf" => Ok(Species::HighElf),
-            "Hill Orc" => Ok(Species::HillOrc),
-            "Human" => Ok(Species::Human),
-            "Kobold" => Ok(Species::Kobold),
-            "Merfolk" => Ok(Species::Merfolk),
-            "Minotaur" => Ok(Species::Minotaur),
-            "Mummy" => Ok(Species::Mummy),
-            "Naga" => Ok(Species::Naga),
-            "Octopode" => Ok(Species::Ocotopode),
-            "Ogre" => Ok(Species::Ogre),
-            "Spriggan" => Ok(Species::Spriggan),
-            "Tengu" => Ok(Species::Tengu),
-            "Troll" => Ok(Species::Troll),
-            "Vampire" => Ok(Species::Vampire),
-            "Vine Stalker" => Ok(Species::VineStalker),
+            "felid" => Ok(Species::Felid),
+            "formicid" => Ok(Species::Formicid),
+            "gargoyle" => Ok(Species::Gargoyle),
+            "ghoul" => Ok(Species::Ghoul),
+            "gnoll" => Ok(Species::Gnoll),
+            "halfling" => Ok(Species::Halfling),
+            "high elf" => Ok(Species::HighElf),
+            "hill orc" => Ok(Species::HillOrc),
+            "human" => Ok(Species::Human),
+            "kobold" => Ok(Species::Kobold),
+            "merfolk" => Ok(Species::Merfolk),
+            "minotaur" => Ok(Species::Minotaur),
+            "mummy" => Ok(Species::Mummy),
+            "naga" => Ok(Species::Naga),
+            "octopode" => Ok(Species::Ocotopode),
+            "ogre" => Ok(Species::Ogre),
+            "spriggan" => Ok(Species::Spriggan),
+            "tengu" => Ok(Species::Tengu),
+            "troll" => Ok(Species::Troll),
+            "vampire" => Ok(Species::Vampire),
+            "vine Stalker" => Ok(Species::VineStalker),
             _ => Err(()),
         }
     }
