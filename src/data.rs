@@ -164,3 +164,71 @@ impl FromStr for Background {
         }
     }
 }
+
+#[derive(Debug, Clone, Copy)]
+#[repr(i64)]
+pub enum God {
+    Atheist = 0,
+    TheShiningOne,
+    Ashenzari,
+    Beogh,
+    Cheibriados,
+    Dithmenos,
+    Elyvilon,
+    Fedhas,
+    Gozag,
+    Hepliaklqana,
+    Jivya,
+    Kikubaaqudgha,
+    Lugonu,
+    Makhleb,
+    Nemelex,
+    Okawaru,
+    Qazlal,
+    Ru,
+    SifMuna,
+    Trog,
+    Vehumet,
+    WuJian,
+    Xom,
+    Yredelemnul,
+    Zin,
+}
+
+impl FromStr for God {
+    type Err = ();
+    fn from_str(s: &str) -> Result<God, ()> {
+        // TODO: we pay the price of to_lowercase() every call in parsing even though we could match on Title Case
+        // the lowercase is only really needed on the serve (web page) for parsing URL values
+        // we could create two specialized versions of from_str for each, but that would mean we can't use parse which is nice
+        // tricky. perhaps we shouldn't be sharing the enums/impls after all? but they shouldn't go out of sync. ugh.
+        match s.to_lowercase().as_str() {
+            "atheist" => Ok(God::Atheist),
+            "the shining one" => Ok(God::TheShiningOne),
+            "ashenzari" => Ok(God::Ashenzari),
+            "beogh" => Ok(God::Beogh),
+            "cheibriados" => Ok(God::Cheibriados),
+            "dithmenos" => Ok(God::Dithmenos),
+            "elyvilon" => Ok(God::Elyvilon),
+            "fedhas" => Ok(God::Fedhas),
+            "gozag" => Ok(God::Gozag),
+            "hepliaklqana" => Ok(God::Hepliaklqana),
+            "jivya" => Ok(God::Jivya),
+            "kikubaaqudgha" => Ok(God::Kikubaaqudgha),
+            "lugonu" => Ok(God::Lugonu),
+            "makhleb" => Ok(God::Makhleb),
+            "nemelex" => Ok(God::Nemelex),
+            "okawaru" => Ok(God::Okawaru),
+            "qazlal" => Ok(God::Qazlal),
+            "ru" => Ok(God::Ru),
+            "sif muna" => Ok(God::SifMuna),
+            "trog" => Ok(God::Trog),
+            "vehumet" => Ok(God::Vehumet),
+            "wu jian" => Ok(God::WuJian),
+            "xom" => Ok(God::Xom),
+            "yredelemnul" => Ok(God::Yredelemnul),
+            "zin" => Ok(God::Zin),
+            _ => Err(()),
+        }
+    }
+}

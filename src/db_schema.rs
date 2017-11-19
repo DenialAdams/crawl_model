@@ -4,6 +4,7 @@ table! {
         name -> Text,
         species_id -> BigInt,
         background_id -> BigInt,
+        god_id -> BigInt,
         xl -> BigInt,
         dam -> BigInt,
         sdam -> BigInt,
