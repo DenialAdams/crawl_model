@@ -48,6 +48,12 @@ pub struct Game {
     pub scrolls_used: i64,
 }
 
+impl Game {
+    fn is_victory(&self) -> bool {
+        self.tmsg == "escaped with the Orb"
+    }
+}
+
 /*
 
 #[derive(Insertable, AsChangeset)]
