@@ -49,7 +49,7 @@ pub struct Game {
 }
 
 impl Game {
-    fn is_victory(&self) -> bool {
+    pub fn is_victory(&self) -> bool {
         self.tmsg == "escaped with the Orb"
     }
 }
