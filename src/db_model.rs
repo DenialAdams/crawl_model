@@ -21,6 +21,7 @@ pub struct NewGame<'a> {
     pub score: i64,
     pub start: &'a str,
     pub end: &'a str,
+    pub place: &'a str,
     pub potions_used: i64,
     pub scrolls_used: i64,
 }
@@ -46,6 +47,7 @@ pub struct Game {
     pub end: String,
     pub potions_used: i64,
     pub scrolls_used: i64,
+    pub place: String
 }
 
 impl Game {
