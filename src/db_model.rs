@@ -5,55 +5,55 @@ use super::db_schema::games;
 #[derive(Insertable)]
 #[table_name = "games"]
 pub struct NewGame<'a> {
-    pub gid: &'a str,
-    pub name: &'a str,
-    pub species_id: i64,
-    pub background_id: i64,
-    pub god_id: i64,
-    pub xl: i64,
-    pub dam: i64,
-    pub sdam: i64,
-    pub tdam: i64,
-    pub tmsg: &'a str,
-    pub turn: i64,
-    pub dur: i64,
-    pub runes: i64,
-    pub score: i64,
-    pub start: &'a str,
-    pub end: &'a str,
-    pub place: &'a str,
-    pub potions_used: i64,
-    pub scrolls_used: i64,
+   pub gid: &'a str,
+   pub name: &'a str,
+   pub species_id: i64,
+   pub background_id: i64,
+   pub god_id: i64,
+   pub xl: i64,
+   pub dam: i64,
+   pub sdam: i64,
+   pub tdam: i64,
+   pub tmsg: &'a str,
+   pub turn: i64,
+   pub dur: i64,
+   pub runes: i64,
+   pub score: i64,
+   pub start: &'a str,
+   pub end: &'a str,
+   pub place: &'a str,
+   pub potions_used: i64,
+   pub scrolls_used: i64,
 }
 
 #[derive(Queryable)]
 #[table_name = "games"]
 pub struct Game {
-    pub gid: String,
-    pub name: String,
-    pub species_id: i64,
-    pub background_id: i64,
-    pub god_id: i64,
-    pub xl: i64,
-    pub dam: i64,
-    pub sdam: i64,
-    pub tdam: i64,
-    pub tmsg: String,
-    pub turn: i64,
-    pub dur: i64,
-    pub runes: i64,
-    pub score: i64,
-    pub start: String,
-    pub end: String,
-    pub potions_used: i64,
-    pub scrolls_used: i64,
-    pub place: String
+   pub gid: String,
+   pub name: String,
+   pub species_id: i64,
+   pub background_id: i64,
+   pub god_id: i64,
+   pub xl: i64,
+   pub dam: i64,
+   pub sdam: i64,
+   pub tdam: i64,
+   pub tmsg: String,
+   pub turn: i64,
+   pub dur: i64,
+   pub runes: i64,
+   pub score: i64,
+   pub start: String,
+   pub end: String,
+   pub potions_used: i64,
+   pub scrolls_used: i64,
+   pub place: String,
 }
 
 impl Game {
-    pub fn is_victory(&self) -> bool {
-        self.tmsg == "escaped with the Orb"
-    }
+   pub fn is_victory(&self) -> bool {
+      self.tmsg == "escaped with the Orb"
+   }
 }
 
 /*

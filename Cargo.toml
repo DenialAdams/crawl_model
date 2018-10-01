@@ -4,5 +4,5 @@ version = "0.1.0"
 authors = ["Richard McCormack <brick@brick.codes>"]
 
 [dependencies]
-diesel = { version = "0.99", features = ["sqlite", "large-tables"] }
-dotenv = "0.10.1"
+diesel = { version = "1", features = ["sqlite", "32-column-tables"] }
+dotenv = "0.10"
